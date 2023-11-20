@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import { Client } from '@notionhq/client';
 import { remark } from 'remark'
 import html from 'remark-html';
+import Link from 'next/link';
 
 // Notion APIクライアントの初期化
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -26,7 +27,7 @@ const getPosts = async () => {
 
   // レスポンスからブログ投稿のデータを抽出し、必要な変換を行う
   const posts = await Promise.all(
-    response.results.map(async (page) => {
+    response.results.map(async (page: any) => {
       // ページがPageObjectResponse型であることを確認
       if ('properties' in page) {
         // ここでは、ページのタイトルと日付を取得する例を示します
@@ -66,7 +67,11 @@ const Home = ({ posts }) => {
       <h1>ブログ</h1>
       {posts.map((post) => (
         <article key={post.id}>
-          <h2>{post.title}</h2>
+          <h2>
+            <Link href={`/${post.id}`}>
+              {post.title}
+            </Link>
+          </h2>
           <div>{post.date}</div>
         </article>
       ))}
