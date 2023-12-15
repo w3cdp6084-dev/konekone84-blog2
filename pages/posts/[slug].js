@@ -10,7 +10,7 @@ async function getPosts() {
     database_id: process.env.NOTION_DATABASE_ID,
   });
 
-  const posts = response.results.map((page: any) => {
+  const posts = response.results.map((page) => {
     const title = page.properties?.Title?.title?.[0]?.plain_text || '';
     return {
       id: page.id,
@@ -38,16 +38,16 @@ async function getPost(id) {
 }
 
 // getStaticPathsの定義
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function getStaticPaths() {
   // ここですべての記事のIDを取得します
   const posts = await getPosts();
   const paths = posts.map((post) => ({ params: { id: post.id } }));
-
+  // 重複したreturn文を削除します
   return { paths, fallback: false };
 };
 
 // getStaticPropsの定義
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export async function getStaticProps({ params }) {
   // params.idを使用して記事の詳細データを取得します
   const post = await getPost(params.id);
   return { props: { post } };
