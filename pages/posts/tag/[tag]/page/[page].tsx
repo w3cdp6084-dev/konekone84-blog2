@@ -93,6 +93,7 @@ const BlogTagPageList: React.FC<{
                 description={post.description}
                 date={post.date}
                 tags={post.tags}
+                thumbnail={post.thumbnail}
                 slug={post.slug}
                 isPaginationPage={true}
               />

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Image from 'next/image';
 
 type Props = {
   title: string;
@@ -8,16 +9,22 @@ type Props = {
   tags: string[];
   slug: string;
   isPaginationPage: boolean;
+  thumbnail: string;
 };
 
 const SinglePost = (props: Props) => {
-  const { title, description, date, tags, slug, isPaginationPage } = props;
+  const { title, description, date, tags, slug, isPaginationPage, thumbnail } = props;
 
   return (
     <>
       {isPaginationPage ? (
         <section className=" bg-sky-900 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
           <div className="lg:flex items-center">
+            {thumbnail ? (
+              <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
+            ) : (
+              <div>Loading...</div>
+            )}
             <h2 className="text-gray-100 text-2xl font-medium mb-2">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
@@ -35,6 +42,11 @@ const SinglePost = (props: Props) => {
       ) : (
         <section className="lg:w-1/2 bg-sky-900 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
           <div className="flex items-center gap-3">
+            {thumbnail ? (
+              <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
+            ) : (
+              <div>Loading...</div>
+            )}
             <h2 className="text-gray-100 text-2xl font-medium mb-2">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>

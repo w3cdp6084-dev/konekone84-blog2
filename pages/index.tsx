@@ -31,7 +31,7 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
         <h1 className="text-5xl font-medium text-center mb-16">
           Blog
         </h1>
-        {fourPosts.map((post: { id: string, title: string, description: string, date: string, tags: string[], slug: string }) => (
+        {fourPosts.map((post: { id: string, title: string, description: string, date: string, tags: string[], slug: string, thumbnail: string }) => (
           <div className="mx-4" key={post.id}>
             <SinglePost
               title={post.title}
@@ -39,6 +39,7 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
               date={post.date}
               tags={post.tags}
               slug={post.slug}
+              thumbnail={post.thumbnail} // This line has been added
               isPaginationPage={false}
             />
           </div>
