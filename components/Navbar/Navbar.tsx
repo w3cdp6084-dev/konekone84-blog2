@@ -1,54 +1,35 @@
 import Link from "next/link";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { gsap } from "gsap";
+import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null);
+  const menuRef = useRef();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      gsap.to(menuRef.current, { x: 0, duration: 0.5 });
+    } else {
+      gsap.to(menuRef.current, { x: "-100%", duration: 0.5 });
+    }
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      gsap.to(menuRef.current, { x: '0%', duration: 0.5 });
-    } else {
-      gsap.to(menuRef.current, { x: '100%', duration: 0.5 });
-    }
-  }, [isOpen]);
-
   return (
-    <nav>
-      <div>
-        <Link href="/">
-          TOP
-        </Link>
-        <button onClick={toggleMenu}>
-          <span>☰</span>
-        </button>
-        <div ref={menuRef} style={{ x: '100%', position: 'fixed', top: 0, right: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.8)', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', transition: 'all 0.5s ease' }}>
-          <ul>
-            <li>
-              <Link href="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                Twitter
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                Qiita
-              </Link>
-            </li>
-          </ul>
-        </div>
+    <nav className={styles.navbar}>
+      <div id="menuToggle">
+        <input type="checkbox" onClick={toggleMenu} checked={isOpen} />
+        <span></span>
+        <span></span>
+        <ul ref={menuRef} id="menu">
+          <Link href="/"><li>Home</li></Link>
+          <Link href="/about"><li>About</li></Link>
+          <Link href="/contact"><li>Contact</li></Link>
+        </ul>
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
