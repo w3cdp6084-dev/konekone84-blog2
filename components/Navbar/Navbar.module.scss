@@ -4,9 +4,9 @@
 .menuToggle
 {
   display: block;
-  position: relative;
-  top: 50px;
-  left: 50px;
+  position: fixed;
+  top: 40px;
+  right: 40px;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
@@ -48,9 +48,11 @@
 }
 .menu
 {
-  position: absolute;
-  width: 300px;
-  margin: -100px 0 0 -50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: -100px auto 0 auto;
   padding: 50px;
   padding-top: 125px;
   background: #ededed;
@@ -58,6 +60,9 @@
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  border-radius: 16px;
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
   li
   {
     padding: 10px 0;
@@ -65,4 +70,14 @@
     color: #333;
   }
 }
-
+.overlay {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.5);
+ visibility: hidden;
+ opacity: 0;
+ transition: backdrop-filter .25s cubic-bezier(.104,.204,.492,1) 0s,opacity .25s cubic-bezier(.104,.204,.492,1) 0s,visibility .25s cubic-bezier(.104,.204,.492,1) 0s;
+}
