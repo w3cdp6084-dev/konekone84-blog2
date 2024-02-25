@@ -83,11 +83,11 @@ export const getSinglePost = async (slug: string) => {
   };
 };
 
-/* Topページ用記事の取得(4つ) */
-export const getPostsForTopPage = async (pageSize: number) => {
+/* Topページ用記事の取得(10つ) */
+export const getPostsForTopPage = async () => {
   const allPosts = await getAllPosts();
-  const fourPosts = allPosts.slice(0, pageSize);
-  return fourPosts;
+  const tenPosts = allPosts.slice(0, 10);
+  return tenPosts;
 };
 
 /* ページ番号に応じた記事取得 */
