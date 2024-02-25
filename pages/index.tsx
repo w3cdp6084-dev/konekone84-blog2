@@ -27,14 +27,14 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
       </Head>
       <ul className="list">
         {fourPosts.map((post: { id: string, title: string, description: string, date: string, tags: string[], slug: string, thumbnail: string }) => (
-          <li key={post.id}>
+          <li key={post.id} className="item">
             <SinglePost
               title={post.title}
               description={post.description}
               date={post.date}
               tags={post.tags}
               slug={post.slug}
-              thumbnail={post.thumbnail} // This line has been added
+              thumbnail={post.thumbnail}
               isPaginationPage={false}
             />
           </li>

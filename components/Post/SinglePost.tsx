@@ -18,7 +18,7 @@ const SinglePost = (props: Props) => {
   return (
     <>
       {isPaginationPage ? (
-        <section className=" bg-sky-900 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
+        <section className="items">
           <div className="lg:flex items-center">
             {thumbnail ? (
               <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
@@ -40,26 +40,28 @@ const SinglePost = (props: Props) => {
           <p className="text-gray-100">{description}</p>
         </section>
       ) : (
-        <section className="lg:w-1/2 bg-sky-900 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
-          <div className="flex items-center gap-3">
-            {thumbnail ? (
-              <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
-            ) : (
-              <div>Loading...</div>
-            )}
-            <h2 className="text-gray-100 text-2xl font-medium mb-2">
-              <Link href={`/posts/${slug}`}>{title}</Link>
-            </h2>
-            <div className="text-gray-400">{date}</div>
-            {tags.map((tag: string, index: number) => (
-              <Link href={`/posts/tag/${tag}/page/1`} key={index}>
-                <span className="text-white bg-gray-500 rounded-xl px-2 font-medium">
-                  {tag}
-                </span>
-              </Link>
-            ))}
-          </div>
-          <p className="text-gray-100">{description}</p>
+        <section className="items">
+          <Link href={`/posts/${slug}`}>
+            <div className="flex items-center gap-3">
+              {thumbnail ? (
+                <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
+              ) : (
+                <div>Loading...</div>
+              )}
+              <h2 className="title">
+                {title}
+              </h2>
+              <div className="date">{date}</div>
+              {tags.map((tag: string, index: number) => (
+                <Link href={`/posts/tag/${tag}/page/1`} key={index}>
+                  <span className="tag">
+                    {tag}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <p className="description">{description}</p>
+          </Link>
         </section>
       )}
     </>
