@@ -42,10 +42,10 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
 
       </ul>
       <div>
-      <Link
-          href="/posts/page/1"
-          className="mb-6 lg:w-1/2 mx-auto px-5 block text-right"
-        >
+        <Link
+            href="/posts/page/1"
+            className="mb-6 lg:w-1/2 mx-auto px-5 block text-right"
+          >
           ...もっと見る
         </Link>
         <Tag tags={allTags} />

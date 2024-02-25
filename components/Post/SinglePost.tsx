@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from 'next/image';
-
+import { useRouter } from 'next/router';
 type Props = {
   title: string;
   description: string;
@@ -14,7 +14,11 @@ type Props = {
 
 const SinglePost = (props: Props) => {
   const { title, description, date, tags, slug, isPaginationPage, thumbnail } = props;
+  const router = useRouter();
 
+  const handleClick = () => {
+    router.push(`/posts/${slug}`);
+  };
   return (
     <>
       {isPaginationPage ? (
@@ -40,31 +44,23 @@ const SinglePost = (props: Props) => {
           <p className="text-gray-100">{description}</p>
         </section>
       ) : (
-        <section className="items">
-          <Link href={`/posts/${slug}`}>
-            <div className="flex items-center gap-3">
-              {thumbnail ? (
-                <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
-              ) : (
-                <div>Loading...</div>
-              )}
-              <div className="upper">
-                <h2 className="title">
-                  {title}
-                </h2>
-                <div className="date">{date}</div>
-              </div>
-              {tags.map((tag: string, index: number) => (
-                <Link href={`/posts/tag/${tag}/page/1`} key={index}>
-                  <span className="tag">
-                    {tag}
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <p className="description">{description}</p>
-          </Link>
-        </section>
+        <section className="items cursor-pointer" onClick={handleClick}>
+        <div className="flex items-center gap-3">
+          {thumbnail ? (
+            <Image src={thumbnail} alt={title} width={128} height={128} className="object-cover rounded-md"/>
+          ) : (
+            <div>Loading...</div>
+          )}
+          <h2 className="title">{title}</h2>
+          <div className="date">{date}</div>
+          {tags.map((tag: string, index: number) => (
+            <span className="tag" key={index}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        <p className="descri">{description}</p>
+      </section>
       )}
     </>
   );
