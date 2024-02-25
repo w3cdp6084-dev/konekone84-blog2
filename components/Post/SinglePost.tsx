@@ -48,10 +48,12 @@ const SinglePost = (props: Props) => {
               ) : (
                 <div>Loading...</div>
               )}
-              <h2 className="title">
-                {title}
-              </h2>
-              <div className="date">{date}</div>
+              <div className="upper">
+                <h2 className="title">
+                  {title}
+                </h2>
+                <div className="date">{date}</div>
+              </div>
               {tags.map((tag: string, index: number) => (
                 <Link href={`/posts/tag/${tag}/page/1`} key={index}>
                   <span className="tag">

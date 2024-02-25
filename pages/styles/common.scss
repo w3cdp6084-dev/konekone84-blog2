@@ -12,40 +12,51 @@
       background-color: #fff;
       border-radius: 12px;
       padding: 24px;
+      transition: all 0.3s ease; 
       .items {
         img {
           border-radius: 12px;
           object-fit: cover;
           width: 100%;
         }
+        .upper{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 24px 0 12px 0;
         .title {
           color: #444;
           font-size: 1.6rem;
           font-weight: 700;
-          margin: 24px 0 12px 0;
+
         }
         .date {
           color: #666;
           font-size: 0.7rem;
-          margin: 0 0 24px 0;
-        }
-        .tag {
-          color: #666;
-          font-size: 0.8rem;
-          display: block;
-          background-color: #f5f5f5;
-          padding: 4px 8px;
-          width: fit-content;
-          border-radius: 4px;
-          margin: 0 0 12px 0;
-        }
-        .description {
-          color: #666;
-          font-size: 1rem;
-
         }
 
       }
+      .tag {
+        color: #666;
+        font-size: 0.8rem;
+        display: block;
+        background-color: #f5f5f5;
+        padding: 4px 8px;
+        width: fit-content;
+        border-radius: 4px;
+        margin: 0 0 12px 0;
+      }
+      .description {
+        color: #666;
+        font-size: 1rem;
+
+      }
+      }
+    }
+    .item:hover {
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      transform: translateY(-5px);
     }
   }
 }
