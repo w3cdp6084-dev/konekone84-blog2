@@ -3,7 +3,7 @@ import { getAllPosts, getSinglePost } from "../../lib/notion";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import Link from "next/link";
-// import { defaultStyle } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import styles from "../styles/Post.module.scss";
 
 export const getStaticPaths = async () => {
   const allPosts = await getAllPosts();
@@ -32,7 +32,7 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post }) => {
   return (
-    <section className="container lg:px-2 px-5 h-screen lg:w-2/5 mx-auto mt-20">
+    <section className={styles.container}>
       <h2 className="w-full text-2xl font-medium">{post.metadata.title}</h2>
       <div className="border-b-2 w-1/3 mt-1 border-sky-900"></div>
       <span className="text-gray-500">Posted date at {post.metadata.date}</span>
