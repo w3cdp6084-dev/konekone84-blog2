@@ -59,7 +59,7 @@ const SinglePost = (props: Props) => {
             </span>
           ))}
         </div>
-        <p className="descri">{description}</p>
+        <p className="description">{description}</p>
       </section>
       )}
     </>

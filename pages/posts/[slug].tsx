@@ -31,6 +31,11 @@ interface PostProps {
 }
 
 const Post: React.FC<PostProps> = ({ post }) => {
+  const preprocessMarkdown = (markdown: string) => {
+    // 行末に2つのスペースを追加して改行を強制
+    return markdown.split('\n').join('  \n');
+  };
+
   return (
     <article className={styles.container}>
       <header className={styles.slugHeader}>
@@ -63,12 +68,13 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <code>{children}</code>
               );
             },
-          }}
+            paragraph: ({ node, children }) => {
+              return <div>{children}</div>;
+            },
+          } as Partial<Components>}
         >
-          {post.markdown}
+          {preprocessMarkdown(post.markdown)}
         </ReactMarkdown>
-
-
       </div>
 
       <Link href="/">
