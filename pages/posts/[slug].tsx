@@ -69,9 +69,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
               );
             },
             paragraph: ({ node, children }) => {
-              return <div>{children}</div>;
+              return <p className={styles.paragraph}>{children}</p>;
             },
-          } as Partial<Components>}
+          }}
         >
           {preprocessMarkdown(post.markdown)}
         </ReactMarkdown>
