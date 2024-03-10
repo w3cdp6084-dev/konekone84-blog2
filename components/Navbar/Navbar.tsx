@@ -49,7 +49,7 @@ const Navbar = () => {
           <span ref={bottomLineRef}></span>
         </div>
         <ul ref={menuRef} className={styles.menu}>
-          {["/", "/about", "/contact"].map((path, index) => (
+          {["/", "/about"].map((path, index) => (
             <li key={path} ref={el => menuItemsRef.current[index] = el}>
               <Link href={path}>{path.replace("/", "") || "Home"}</Link>
             </li>
