@@ -1,0 +1,22 @@
+.outer{
+ width: 100%;
+ background-color: #666;
+ position: fixed;
+ left: 0;
+ right: 0;
+ bottom: 0;
+}
+
+.footerWrap{
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #666;
+  color: #ffffff;
+  padding: 24px;
+
+  h1{
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
