@@ -23,10 +23,11 @@
     color: #666;
     font-size: 0.8rem;
     color: #666;
+    transition: all 0.3s ease;
    }
    &:hover{
     background-color: #666;
-    transition: background-color .12s;
+    transition: all 0.3s ease;
     a{
      color: #ffffff;
     }

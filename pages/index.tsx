@@ -41,15 +41,15 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
         ))}
 
       </ul>
-      <div>
+      <div className="control">
         <Link
             href="/posts/page/1"
-            className="mb-6 lg:w-1/2 mx-auto px-5 block text-right"
+            className="moreBtn"
           >
-          ...もっと見る
+          もっと見る
         </Link>
-        <Tag tags={allTags} />
       </div>
+      <Tag tags={allTags} />
     </div>
   );
 }
