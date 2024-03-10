@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 import { useTheme } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
 interface LayoutProps {
@@ -15,6 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="main">
         {children}
       </main>
+      <Footer />
     </div>
   );
 };

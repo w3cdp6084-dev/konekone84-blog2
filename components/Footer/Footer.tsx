@@ -5,7 +5,7 @@ export default function Footer() {
     <div>
       <div>
         <div>
-          <h1>Footer</h1>
+          <h1>@2024 Yusuke Mori</h1>
         </div>
       </div>
     </div>
