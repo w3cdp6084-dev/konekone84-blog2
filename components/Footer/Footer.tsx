@@ -14,7 +14,7 @@ export default function Footer() {
           <Link href="https://github.com/konekone"><li>GitHub</li></Link>
           <li>Dribbble</li>
         </ul>
-        <h1>@2024 Yusuke Mori</h1>
+        <p>@2024 Yusuke Mori</p>
       </footer>
     </div>
   )
