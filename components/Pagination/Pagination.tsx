@@ -1,35 +1,29 @@
-import Link from "next/link";
-import React from "react";
-import { getPageLink } from "../../lib/blog-helper";
+import Link from 'next/link';
 
-interface Props {
-  numberOfPage: number;
-  tag: string;
+interface PaginationProps {
+  totalPages: number;
+  currentPage: number;
 }
 
-const Pagination = (props: Props) => {
-  const { numberOfPage, tag } = props;
-
-  let pages: number[] = [];
-  for (let i = 1; i <= numberOfPage; i++) {
-    pages.push(i);
-  }
-
+const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage }) => {
   return (
-    <section className="mb-8 lg:w-1/2 mx-auto rounded-md p-5">
-      <ul className="flex items-center justify-center gap-4">
-        {pages.map((page) => (
-          <li className="bg-sky-900 rounded-lg w-6 h-8 relative" key={page}>
-            <Link
-              href={getPageLink(tag, page)}
-              className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 text-gray-100"
-            >
-              {page}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div className="control">
+      {currentPage > 1 && (
+        <Link href={`/posts/page/${currentPage - 1}`}>
+          <span className="moreBtn">前へ</span>
+        </Link>
+      )}
+      {Array.from({ length: totalPages }, (_, i) => (
+        <Link key={i} href={`/posts/page/${i + 1}`}>
+          <span className={`moreBtn ${currentPage === i + 1 ? 'active' : ''}`}>{i + 1}</span>
+        </Link>
+      ))}
+      {currentPage < totalPages && (
+        <Link href={`/posts/page/${currentPage + 1}`}>
+          <span className="moreBtn">次へ</span>
+        </Link>
+      )}
+    </div>
   );
 };
 

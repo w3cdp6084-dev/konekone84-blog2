@@ -3,6 +3,7 @@ import Head from "next/head";
 import Pagination from "../../../components/Pagination/Pagination";
 import SinglePost from "../../../components/Post/SinglePost";
 import Tag from "../../../components/Tag/Tag";
+import { useRouter } from 'next/router';
 import {
   getAllPosts,
   getAllTags,
@@ -54,6 +55,9 @@ interface BlogPageListProps {
 }
 
 const BlogPageList: React.FC<BlogPageListProps> = ({ postsByPage, numberOfPage, allTags }) => {
+  const router = useRouter();
+  const currentPage = parseInt(router.query.page as string, 10);
+
   return (
     <div className="container h-full w-full mx-auto">
       <Head>
@@ -81,7 +85,7 @@ const BlogPageList: React.FC<BlogPageListProps> = ({ postsByPage, numberOfPage, 
             </div>
           ))}
         </section>
-        <Pagination numberOfPage={numberOfPage} tag={""} />
+        <Pagination totalPages={numberOfPage} currentPage={currentPage} />
         <Tag tags={allTags} />
       </main>
     </div>

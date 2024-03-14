@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SinglePost from "../components/Post/SinglePost";
 import Tag from "../components/Tag/Tag";
+import Pagination from "../components/Pagination/Pagination";
 import { getAllTags, getPostsForTopPage } from "../lib/notion";
 export const getStaticProps: GetStaticProps = async () => {
   const fourPosts = await getPostsForTopPage(10);
@@ -42,12 +43,7 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
 
       </ul>
       <div className="control">
-        <Link
-            href="/posts/page/1"
-            className="moreBtn"
-          >
-          もっと見る
-        </Link>
+        <Pagination totalPages={4} currentPage={1} />
       </div>
       <Tag tags={allTags} />
     </div>
