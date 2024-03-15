@@ -51,7 +51,9 @@ const Navbar = () => {
         <ul ref={menuRef} className={styles.menu}>
           {["/", "/about"].map((path, index) => (
             <li key={path} ref={el => menuItemsRef.current[index] = el}>
-              <Link href={path}>{path.replace("/", "") || "Home"}</Link>
+              <Link href={path}>
+                <button onClick={() => setIsOpen(false)}>{path.replace("/", "") || "Home"}</button>
+              </Link>
             </li>
           ))}
         </ul>
