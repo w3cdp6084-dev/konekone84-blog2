@@ -56,7 +56,7 @@ interface BlogPageListProps {
 
 const BlogPageList: React.FC<BlogPageListProps> = ({ postsByPage, numberOfPage, allTags }) => {
   const router = useRouter();
-  const currentPage = parseInt(router.query.page as string, 10);
+  const currentPage = parseInt(router.query.page as string, 10) || 1;
 
   return (
     <div className="container h-full w-full mx-auto">

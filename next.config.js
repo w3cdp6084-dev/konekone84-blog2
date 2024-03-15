@@ -6,8 +6,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/posts/page', // ルートのURL
-        destination: '/posts/page/1', // 1ページ目のURL
+        source: '/posts/page',
+        destination: '/posts/page/1',
         permanent: true,
       },
     ]
