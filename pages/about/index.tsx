@@ -1,8 +1,23 @@
 import styles from '../styles/About.module.scss';
+import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
+ const pageTransition = {
+   initial: { opacity: 0 },
+   animate: { opacity: 1 },
+   exit: { opacity: 0 },
+   transition: { duration: 0.5 }
+ };
+
  return (
-   <div className={styles.aboutContainer}>
+   <motion.div
+     initial="initial"
+     animate="animate"
+     exit="exit"
+     variants={pageTransition}
+     transition={{ duration: 0.5 }}
+     className={styles.aboutContainer}
+   >
     <h1>About Me</h1>
     <div>
       <h2>Yusuke Mori</h2>
@@ -42,7 +57,7 @@ const About: React.FC = () => {
         </ul>
       </div>
     </div>
-   </div>
+   </motion.div>
  );
 }
 

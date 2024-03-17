@@ -17,9 +17,24 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 10,
   };
 };
+import { motion } from 'framer-motion';
 
 export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: any }) {
+  const pageTransition = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.5 }
+  };
   return (
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageTransition}
+      transition={{ duration: 0.5 }}
+      className="homeContainer"
+    >
     <div className="container h-full w-full mx-auto">
       <Head>
         <title>Notion-Blog</title>
@@ -47,5 +62,6 @@ export default function Home({ fourPosts, allTags }: { fourPosts: any, allTags: 
       </div>
       <Tag tags={allTags} />
     </div>
+    </motion.div>
   );
 }
