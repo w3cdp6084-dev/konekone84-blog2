@@ -1,11 +1,9 @@
 .outer{
  width: 100%;
  background-color: #666;
- position: fixed;
- left: 0;
- right: 0;
+ height: 160px; 
+ position: absolute;
  bottom: 0;
-
 }
 
 .footerWrap{
