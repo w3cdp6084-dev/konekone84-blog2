@@ -32,7 +32,6 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const preprocessMarkdown = (markdown: string) => {
-    // 行末に2つのスペースを追加して改行を強制
     return markdown.split('\n').join('  \n');
   };
 
@@ -80,6 +79,12 @@ const Post: React.FC<PostProps> = ({ post }) => {
       <Link href="/">
         <span className="pb-20 block mt-3 text-sky-900">←ホームに戻る</span>
       </Link>
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="mt-4 text-blue-500"
+      >
+        Topへ戻る
+      </button>
     </article>
   );
 };
