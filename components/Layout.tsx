@@ -12,11 +12,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className={theme}>
       <ThemeToggle />
+      <div className="wrap">
         <Header />
-          <main className="main">
-            {children}
-          </main>
+        <main className="main">
+          {children}
+        </main>
         <Footer />
+      </div>
     </div>
   );
 };

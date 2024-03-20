@@ -1,7 +1,13 @@
+.wrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .main {
   position: relative;
   padding: 10rem 0 0 0;
   padding-bottom: 160px;
+  flex-grow: 1; 
   .list {
     align-items: flex-start;
     display: grid;
